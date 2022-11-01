@@ -1,9 +1,26 @@
+def sublist(sublist, lst):
+    if not isinstance(sublist, list):
+        raise ValueError("sublist must be a list")
+    if not isinstance(lst, list):
+        raise ValueError("lst must be a list")
 
-num1 = list(map(int, input().split()))
-num2 = list(map(int, input().split()))
+    sublist_len = len(sublist)
+    k=0
+    s=None
 
-# ******************************
-# Make your Code
-# ******************************
+    if (sublist_len > len(lst)):
+        return False
+    elif (sublist_len == 0):
+        return True
 
-# print ('True') or print ('False')
+    for x in lst:
+        if x == sublist[k]:
+            if (k == 0): s = x
+            elif (x != s): s = None
+            k += 1
+            if k == sublist_len:
+                return True
+        elif k > 0 and sublist[k-1] != s:
+            k = 0
+
+    return False
